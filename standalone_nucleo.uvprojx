@@ -323,7 +323,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -440,6 +440,9 @@
         <Group>
           <GroupName>::Device</GroupName>
         </Group>
+        <Group>
+          <GroupName>::EdgeImpulse</GroupName>
+        </Group>
       </Groups>
     </Target>
   </Targets>
@@ -449,9 +452,24 @@
       <filter>
         <targetInfos/>
       </filter>
+      <package name="CMSIS-DSP" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.15.0">
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE"/>
+        </targetInfos>
+      </package>
+      <package name="CMSIS-NN" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="4.0.0">
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE" versionMatchMode="fixed"/>
+        </targetInfos>
+      </package>
       <package name="CMSIS" schemaVersion="1.7.7" url="http://www.keil.com/pack/" vendor="ARM" version="5.9.0">
         <targetInfos>
           <targetInfo name="Nucleo F466RE" versionMatchMode="fixed"/>
+        </targetInfos>
+      </package>
+      <package name="EI-SDK" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.0">
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE"/>
         </targetInfos>
       </package>
       <package name="ARM_Compiler" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="Keil" version="1.7.2">
@@ -507,6 +525,24 @@
     <components>
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.6.0" condition="ARMv6_7_8-M Device">
         <package name="CMSIS" schemaVersion="1.7.7" url="http://www.keil.com/pack/" vendor="ARM" version="5.9.0"/>
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE"/>
+        </targetInfos>
+      </component>
+      <component Cclass="CMSIS" Cgroup="DSP" Cvariant="Source" Cvendor="ARM" Cversion="1.15.0" condition="CMSISCORE">
+        <package name="CMSIS-DSP" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.15.0"/>
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE"/>
+        </targetInfos>
+      </component>
+      <component Cclass="CMSIS" Cgroup="NN Lib" Cvendor="ARM" Cversion="4.0.0" condition="CMSIS-NN">
+        <package name="CMSIS-NN" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="4.0.0"/>
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE"/>
+        </targetInfos>
+      </component>
+      <component Cclass="EdgeImpulse" Cgroup="SDK" Cvendor="EdgeImpulse" Cversion="1.0.0">
+        <package name="EI-SDK" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.0"/>
         <targetInfos>
           <targetInfo name="Nucleo F466RE"/>
         </targetInfos>
