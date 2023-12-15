@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 EdgeImpulse Inc.
+ * Copyright (c) 2023 EdgeImpulse Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

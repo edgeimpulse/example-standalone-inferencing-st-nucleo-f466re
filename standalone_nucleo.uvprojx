@@ -472,6 +472,11 @@
           <targetInfo name="Nucleo F466RE"/>
         </targetInfos>
       </package>
+      <package name="Motion_recognition" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.44">
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE"/>
+        </targetInfos>
+      </package>
       <package name="ARM_Compiler" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="Keil" version="1.7.2">
         <targetInfos>
           <targetInfo name="Nucleo F466RE"/>
@@ -543,6 +548,12 @@
       </component>
       <component Cclass="EdgeImpulse" Cgroup="SDK" Cvendor="EdgeImpulse" Cversion="1.0.0">
         <package name="EI-SDK" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.0"/>
+        <targetInfos>
+          <targetInfo name="Nucleo F466RE"/>
+        </targetInfos>
+      </component>
+      <component Cclass="EdgeImpulse" Cgroup="model" Csub="Motion_recognition" Cvendor="EdgeImpulse" Cversion="1.0.44">
+        <package name="Motion_recognition" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.44"/>
         <targetInfos>
           <targetInfo name="Nucleo F466RE"/>
         </targetInfos>
