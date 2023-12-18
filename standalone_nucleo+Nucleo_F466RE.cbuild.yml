@@ -1,0 +1,977 @@
+build:
+  generated-by: csolution version 2.2.1
+  solution: standalone_nucleo.csolution.yml
+  project: standalone_nucleo.cproject.yml
+  context: standalone_nucleo+Nucleo_F466RE
+  compiler: AC6
+  board: STMicroelectronics::NUCLEO-F446RE:Rev.C
+  board-pack: Keil::STM32NUCLEO_BSP@1.8.1
+  device: STM32F446RETx
+  device-pack: Keil::STM32F4xx_DFP@2.17.1
+  processor:
+    endian: little
+    fpu: sp
+    trustzone: non-secure
+    core: Cortex-M4
+  packs:
+    - pack: ARM::CMSIS-NN@4.0.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0
+    - pack: ARM::CMSIS@5.9.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0
+    - pack: EdgeImpulse::EI-SDK@1.0.0
+      path: ../keil/ei_sdk
+    - pack: EdgeImpulse::Motion_recognition@1.0.44
+      path: ../keil/model_pack
+    - pack: Keil::MDK-Middleware@7.16.0
+      path: ${CMSIS_PACK_ROOT}/Keil/MDK-Middleware/7.16.0
+    - pack: Keil::STM32F4xx_DFP@2.17.1
+      path: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1
+    - pack: Keil::STM32NUCLEO_BSP@1.8.1
+      path: ${CMSIS_PACK_ROOT}/Keil/STM32NUCLEO_BSP/1.8.1
+  optimize: speed
+  debug: on
+  misc:
+    ASM:
+      - -masm=auto
+    C:
+      - -std=c99
+      - -Wno-c++98-compat -Wno-c++98-compat-pedantic
+      - -fno-rtti
+      - -funsigned-char
+      - -fshort-enums
+      - -fshort-wchar
+      - -ffunction-sections
+      - -Weverything
+      - -Wno-packed
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+      - -Wno-license-management
+      - -Wno-parentheses-equality
+    CPP:
+      - -xc++
+      - -std=c++11
+      - -Wno-c++98-compat -Wno-c++98-compat-pedantic
+      - -fno-rtti
+      - -funsigned-char
+      - -fshort-enums
+      - -fshort-wchar
+      - -ffunction-sections
+      - -Weverything
+      - -Wno-packed
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+      - -Wno-license-management
+      - -Wno-parentheses-equality
+    Link:
+      - --map
+      - --load_addr_map_info
+      - --xref
+      - --callgraph
+      - --symbols
+      - --info sizes
+      - --info totals
+      - --info unused
+      - --info veneers
+      - --strict
+      - --summary_stderr
+      - --info summarysizes
+  define:
+    - EI_PORTING_STM32_NUCLEO: 1
+    - EI_PORTING_STM32_CUBEAI: 0
+    - STM32F446xx
+    - _RTE_
+  add-path:
+    - RTE/Device/STM32F446RETx
+    - RTE/Device/STM32F446RETx/STCubeGenerated
+    - RTE/Device/STM32F446RETx/STCubeGenerated/Inc
+    - RTE/_Nucleo_F466RE
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/PrivateInclude
+    - ${CMSIS_PACK_ROOT}/Keil/MDK-Middleware/7.16.0/Board
+    - ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    - ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Inc
+    - ../keil/ei_sdk/edgeimpulse
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/classifier
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/classifier/inferencing_engines
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/dct
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/image
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/kissfft
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/spectral
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/speechpy
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/include
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/common
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/softmax
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/ethos-core-driver/include
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/ethos-core-driver/src
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/c
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/core/api
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/core/c
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal/reference
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/integer_ops
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/memory_planner
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/schema
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/third_party/arc_mli_package/include
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/third_party/arc_mli_package/include/api
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/third_party/gemmlowp/fixedpoint
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/third_party/gemmlowp/internal
+    - ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/third_party/ruy/ruy/profiler
+    - ../keil/model_pack/edgeimpulse
+    - ../keil/model_pack/edgeimpulse/model-parameters
+    - ../keil/model_pack/edgeimpulse/tflite-model
+  output-dirs:
+    intdir: tmp/standalone_nucleo/Nucleo_F466RE
+    outdir: out/standalone_nucleo/Nucleo_F466RE
+    rtedir: RTE
+  output:
+    - type: elf
+      file: standalone_nucleo.axf
+  components:
+    - component: ARM::CMSIS:CORE@5.6.0
+      condition: ARMv6_7_8-M Device
+      from-pack: ARM::CMSIS@5.9.0
+      selected-by: ARM::CMSIS:CORE
+    - component: ARM::CMSIS:DSP&Source@1.10.0
+      condition: CMSIS DSP
+      from-pack: ARM::CMSIS@5.9.0
+      selected-by: ARM::CMSIS:DSP&Source
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/BasicMathFunctions/BasicMathFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/BasicMathFunctions/BasicMathFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/BayesFunctions/BayesFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/BayesFunctions/BayesFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/CommonTables/CommonTables.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/CommonTables/CommonTablesF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/ComplexMathFunctions/ComplexMathFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/ComplexMathFunctions/ComplexMathFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/ControllerFunctions/ControllerFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/DistanceFunctions/DistanceFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/DistanceFunctions/DistanceFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/FastMathFunctions/FastMathFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/FastMathFunctions/FastMathFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/FilteringFunctions/FilteringFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/FilteringFunctions/FilteringFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/InterpolationFunctions/InterpolationFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/InterpolationFunctions/InterpolationFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/MatrixFunctions/MatrixFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/MatrixFunctions/MatrixFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/QuaternionMathFunctions/QuaternionMathFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/SVMFunctions/SVMFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/SVMFunctions/SVMFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/StatisticsFunctions/StatisticsFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/StatisticsFunctions/StatisticsFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/SupportFunctions/SupportFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/SupportFunctions/SupportFunctionsF16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/TransformFunctions/TransformFunctions.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/DSP/Source/TransformFunctions/TransformFunctionsF16.c
+          category: source
+    - component: ARM::CMSIS:NN Lib@4.0.0
+      condition: CMSIS-NN
+      from-pack: ARM::CMSIS-NN@4.0.0
+      selected-by: ARM::CMSIS:NN Lib
+      files:
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ActivationFunctions/arm_nn_activation_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ActivationFunctions/arm_relu6_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ActivationFunctions/arm_relu_q15.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ActivationFunctions/arm_relu_q7.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/BasicMathFunctions/arm_elementwise_add_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/BasicMathFunctions/arm_elementwise_add_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/BasicMathFunctions/arm_elementwise_mul_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/BasicMathFunctions/arm_elementwise_mul_s16_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/BasicMathFunctions/arm_elementwise_mul_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConcatenationFunctions/arm_concatenation_s8_w.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConcatenationFunctions/arm_concatenation_s8_x.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConcatenationFunctions/arm_concatenation_s8_y.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConcatenationFunctions/arm_concatenation_s8_z.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_1_x_n_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_1x1_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_1x1_s8_fast.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_fast_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_wrapper_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_convolve_wrapper_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_depthwise_conv_3x3_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_depthwise_conv_fast_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_depthwise_conv_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_depthwise_conv_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_depthwise_conv_s8_opt.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_depthwise_conv_wrapper_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_depthwise_conv_wrapper_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_nn_depthwise_conv_s8_core.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_nn_mat_mult_kernel_s8_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ConvolutionFunctions/arm_nn_mat_mult_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/FullyConnectedFunctions/arm_fully_connected_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/FullyConnectedFunctions/arm_fully_connected_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/LSTMFunctions/arm_lstm_unidirectional_s8_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_depthwise_conv_nt_t_padded_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_depthwise_conv_nt_t_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_depthwise_conv_nt_t_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_lstm_calculate_gate_s8_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_lstm_step_s8_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_lstm_update_cell_state_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_lstm_update_output_s8_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_mat_mul_core_1x_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_mat_mul_core_4x_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_mat_mul_kernel_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_mat_mult_nt_t_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_vec_mat_mul_result_acc_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_vec_mat_mult_t_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_vec_mat_mult_t_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nn_vec_mat_mult_t_svdf_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_nntables.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/NNSupportFunctions/arm_q7_to_q15_with_offset.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/PoolingFunctions/arm_avgpool_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/PoolingFunctions/arm_avgpool_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/PoolingFunctions/arm_max_pool_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/PoolingFunctions/arm_max_pool_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/ReshapeFunctions/arm_reshape_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/SVDFunctions/arm_svdf_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/SVDFunctions/arm_svdf_state_s16_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/SoftmaxFunctions/arm_nn_softmax_common_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/SoftmaxFunctions/arm_softmax_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/SoftmaxFunctions/arm_softmax_s8.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/SoftmaxFunctions/arm_softmax_s8_s16.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/ARM/CMSIS-NN/4.0.0/Source/SoftmaxFunctions/arm_softmax_u8.c
+          category: source
+    - component: EdgeImpulse::EdgeImpulse:SDK@1.0.0
+      from-pack: EdgeImpulse::EI-SDK@1.0.0
+      selected-by: EdgeImpulse::EdgeImpulse:SDK
+      files:
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/image/processing.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/dsp/memory.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/arduino/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/arduino/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/brickml/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/brickml/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/activation_functions/esp_nn_relu_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/basic_math/esp_nn_add_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/basic_math/esp_nn_mul_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/convolution/esp_nn_conv_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/convolution/esp_nn_conv_esp32s3.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/convolution/esp_nn_conv_opt.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/convolution/esp_nn_depthwise_conv_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/convolution/esp_nn_depthwise_conv_opt.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/convolution/esp_nn_depthwise_conv_s8_esp32s3.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/fully_connected/esp_nn_fully_connected_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/pooling/esp_nn_avg_pool_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/pooling/esp_nn_max_pool_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/softmax/esp_nn_softmax_ansi.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ESP-NN/src/softmax/esp_nn_softmax_opt.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/espressif/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/ethos-core-driver/src/ethosu_device.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/ethos-core-driver/src/ethosu_driver.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/ethos-core-driver/src/ethosu_pmu.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/himax/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/himax/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/iar/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/iar/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/infineon-psoc62/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/infineon-psoc62/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/mbed/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/mbed/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/mingw32/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/mingw32/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/particle/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/particle/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/posix/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/posix/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/raspberry/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/renesas-ra/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/renesas-ra/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/seeed-vision-ai/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/seeed-vision-ai/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/silabs/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/silabs/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/sony/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/sony/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/stm32-cubeai/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/stm32-cubeai/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/synaptics/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/synaptics/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/ti/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/ti/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/zephyr/debug_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/porting/zephyr/ei_classifier_porting.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/c/common.c
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/core/api/common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal/portable_tensor_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal/reference_portable_tensor_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/kernels/tree_ensemble_classifier.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/fake_micro_context.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/flatbuffer_conversions_bridge.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/flatbuffer_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/assign_variable.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_matmul.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/broadcast_args.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/broadcast_to.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/call_once.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/complex_abs.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/cumsum.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/depth_to_space.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/detection_postprocess.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor_div.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor_mod.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/gather.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/gather_nd.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/if.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/log_softmax.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/lstm_eval.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_tensor_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/mirror_pad.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_interface.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/read_variable.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/real.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_bilinear.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/rfft2d.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/select.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/slice.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_depth.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/squared_difference.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/tree_ensemble_classifier.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/unidirectional_sequence_lstm.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/var_handle.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/while.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/non_persistent_buffer_planner_shim.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_allocation_info.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_context.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_graph.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_log.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_resource_variable.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/non_persistent_arena_buffer_allocator.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/op_resolver_bridge.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/persistent_arena_buffer_allocator.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/recording_single_arena_buffer_allocator.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/single_arena_buffer_allocator.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/test_helper_custom_ops.cpp
+          category: source
+        - file: ../keil/ei_sdk/edgeimpulse/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cpp
+          category: source
+    - component: EdgeImpulse::EdgeImpulse:model:Motion_recognition@1.0.44
+      from-pack: EdgeImpulse::Motion_recognition@1.0.44
+      selected-by: EdgeImpulse::EdgeImpulse:model:Motion_recognition
+      files:
+        - file: ../keil/model_pack/edgeimpulse/tflite-model/tflite_learn_7_compiled.cpp
+          category: source
+    - component: Keil::Board Support&NUCLEO-F446RE:LED@1.1.0
+      condition: F446RE CMSIS Device
+      from-pack: Keil::STM32NUCLEO_BSP@1.8.1
+      selected-by: Keil::Board Support&NUCLEO-F446RE:LED
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32NUCLEO_BSP/1.8.1/Boards/ST/NUCLEO-F446RE/Common/LED_NUCLEO-F446RE.c
+          category: sourceC
+    - component: Keil::Device:STM32Cube Framework:STM32CubeMX@1.1.0
+      condition: STM32F4
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube Framework:STM32CubeMX
+      files:
+        - file: RTE/Device/STM32F446RETx/STCubeGenerated/Src/stm32f4xx_hal_msp.c
+          category: source
+      generator:
+        id: STM32CubeMX
+        from-pack: Keil::STM32F4xx_DFP@2.17.1
+    - component: Keil::Device:STM32Cube HAL:Common@1.8.1
+      condition: STM32F4 HAL Common
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:Common
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
+          category: source
+    - component: Keil::Device:STM32Cube HAL:Cortex@1.8.1
+      condition: STM32F4 HAL
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:Cortex
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
+          category: source
+    - component: Keil::Device:STM32Cube HAL:DMA@1.8.1
+      condition: STM32F4 HAL
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:DMA
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c
+          category: source
+    - component: Keil::Device:STM32Cube HAL:GPIO@1.8.1
+      condition: STM32F4 HAL
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:GPIO
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
+          category: source
+    - component: Keil::Device:STM32Cube HAL:PWR@1.8.1
+      condition: STM32F4 HAL
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:PWR
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
+          category: source
+    - component: Keil::Device:STM32Cube HAL:RCC@1.8.1
+      condition: STM32F4 HAL GPIO
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:RCC
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
+          category: source
+    - component: Keil::Device:STM32Cube HAL:TIM@1.8.1
+      condition: STM32F4 HAL DMA
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:TIM
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
+          category: source
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
+          category: source
+    - component: Keil::Device:STM32Cube HAL:UART@1.8.1
+      condition: STM32F4 HAL DMA
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:STM32Cube HAL:UART
+      files:
+        - file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
+          category: source
+    - component: Keil::Device:Startup@2.6.3
+      condition: STM32F4 CMSIS
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      selected-by: Keil::Device:Startup
+      files:
+        - file: RTE/Device/STM32F446RETx/startup_stm32f446xx.s
+          category: source
+          attr: config
+          version: 2.6.8
+        - file: RTE/Device/STM32F446RETx/system_stm32f4xx.c
+          category: source
+          attr: config
+          version: 2.6.8
+  generators:
+    - generator: STM32CubeMX
+      from-pack: Keil::STM32F4xx_DFP@2.17.1
+      path: RTE/Device
+      gpdsc: RTE/Device/STM32F446RETx/FrameworkCubeMX.gpdsc
+      command:
+        win:
+          file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/MDK/CubeMX/STM32CubeMxLauncher.exe
+          arguments:
+            - STM32F446RETx
+            - ../../standalone_nucleo+Nucleo_F466RE.cprj
+            - ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1
+        linux:
+          file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/MDK/CubeMX/STM32CubeMxLauncher.exe
+          arguments:
+            - STM32F446RETx
+            - ../../standalone_nucleo+Nucleo_F466RE.cprj
+            - ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1
+        mac:
+          file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/MDK/CubeMX/STM32CubeMxLauncher.exe
+          arguments:
+            - STM32F446RETx
+            - ../../standalone_nucleo+Nucleo_F466RE.cprj
+            - ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1
+        other:
+          file: ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1/MDK/CubeMX/STM32CubeMxLauncher.exe
+          arguments:
+            - STM32F446RETx
+            - ../../standalone_nucleo+Nucleo_F466RE.cprj
+            - ${CMSIS_PACK_ROOT}/Keil/STM32F4xx_DFP/2.17.1
+  linker:
+    script: standalone_nucleo_Nucleo_F466RE.sct
+  groups:
+    - group: Edge Impulse
+      files:
+        - file: ei_main.cpp
+          category: sourceCpp
+        - file: ei_main.h
+          category: header
+        - file: ei_classifier_porting.cpp
+          category: sourceCpp
+    - group: :STM32CubeMX:Common Sources
+      files:
+        - file: RTE/Device/STM32F446RETx/STCubeGenerated/Src/main.c
+          category: sourceC
+        - file: RTE/Device/STM32F446RETx/STCubeGenerated/Inc/stm32f4xx_it.h
+          category: header
+        - file: RTE/Device/STM32F446RETx/STCubeGenerated/Src/stm32f4xx_it.c
+          category: sourceC
+    - group: peripheral
+      files:
+        - file: uart.c
+          category: sourceC
+  constructed-files:
+    - file: RTE/_Nucleo_F466RE/Pre_Include_Global.h
+      category: preIncludeGlobal
+    - file: RTE/_Nucleo_F466RE/RTE_Components.h
+      category: header
+  licenses:
+    - license: <unknown>
+      packs:
+        - pack: ARM::CMSIS-NN@4.0.0
+      components:
+        - component: ARM::CMSIS:NN Lib@4.0.0
+    - license: <unknown>
+      packs:
+        - pack: ARM::CMSIS@5.9.0
+      components:
+        - component: ARM::CMSIS:CORE@5.6.0
+        - component: ARM::CMSIS:DSP&Source@1.10.0
+    - license: <unknown>
+      license-agreement: ${CMSIS_PACK_ROOT}/EdgeImpulse/EI-SDK/1.0.0/LICENSE
+      packs:
+        - pack: EdgeImpulse::EI-SDK@1.0.0
+      components:
+        - component: EdgeImpulse::EdgeImpulse:SDK@1.0.0
+    - license: <unknown>
+      license-agreement: ${CMSIS_PACK_ROOT}/EdgeImpulse/Motion_recognition/1.0.44/LICENSE
+      packs:
+        - pack: EdgeImpulse::Motion_recognition@1.0.44
+      components:
+        - component: EdgeImpulse::EdgeImpulse:model:Motion_recognition@1.0.44
+    - license: <unknown>
+      packs:
+        - pack: Keil::FrameworkCubeMX@1.0.0
+      components:
+        - component: Keil::Device:STM32Cube Framework:STM32CubeMX@1.1.0
+    - license: <unknown>
+      license-agreement: ${CMSIS_PACK_ROOT}/Keil/MDK-Middleware/7.16.0/license.rtf
+      packs:
+        - pack: Keil::MDK-Middleware@7.16.0
+      components:
+        - component: ::Board Support:LED(API)
+    - license: <unknown>
+      packs:
+        - pack: Keil::STM32F4xx_DFP@2.17.1
+      components:
+        - component: ::Device:STM32Cube Framework(API)
+        - component: Keil::Device:STM32Cube HAL:Common@1.8.1
+        - component: Keil::Device:STM32Cube HAL:Cortex@1.8.1
+        - component: Keil::Device:STM32Cube HAL:DMA@1.8.1
+        - component: Keil::Device:STM32Cube HAL:GPIO@1.8.1
+        - component: Keil::Device:STM32Cube HAL:PWR@1.8.1
+        - component: Keil::Device:STM32Cube HAL:RCC@1.8.1
+        - component: Keil::Device:STM32Cube HAL:TIM@1.8.1
+        - component: Keil::Device:STM32Cube HAL:UART@1.8.1
+        - component: Keil::Device:Startup@2.6.3
+    - license: <unknown>
+      packs:
+        - pack: Keil::STM32NUCLEO_BSP@1.8.1
+      components:
+        - component: Keil::Board Support&NUCLEO-F446RE:LED@1.1.0

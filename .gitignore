@@ -1,3 +1,7 @@
 /Objects
 /Listings
 /DebugConfig
+
+/out
+/tmp
+.clangd

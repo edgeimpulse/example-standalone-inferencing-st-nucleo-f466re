@@ -1,0 +1,9 @@
+build-idx:
+  generated-by: csolution version 2.2.1
+  csolution: standalone_nucleo.csolution.yml
+  cprojects:
+    - cproject: standalone_nucleo.cproject.yml
+  cbuilds:
+    - cbuild: standalone_nucleo+Nucleo_F466RE.cbuild.yml
+      project: standalone_nucleo
+      configuration: +Nucleo_F466RE
