@@ -323,7 +323,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -440,9 +440,6 @@
         <Group>
           <GroupName>::Device</GroupName>
         </Group>
-        <Group>
-          <GroupName>::EdgeImpulse</GroupName>
-        </Group>
       </Groups>
     </Target>
   </Targets>
@@ -465,16 +462,6 @@
       <package name="CMSIS" schemaVersion="1.7.7" url="http://www.keil.com/pack/" vendor="ARM" version="5.9.0">
         <targetInfos>
           <targetInfo name="Nucleo F466RE" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-      <package name="EI-SDK" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.0">
-        <targetInfos>
-          <targetInfo name="Nucleo F466RE"/>
-        </targetInfos>
-      </package>
-      <package name="Motion_recognition" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.44">
-        <targetInfos>
-          <targetInfo name="Nucleo F466RE"/>
         </targetInfos>
       </package>
       <package name="ARM_Compiler" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="Keil" version="1.7.2">
@@ -542,18 +529,6 @@
       </component>
       <component Cclass="CMSIS" Cgroup="NN Lib" Cvendor="ARM" Cversion="4.0.0" condition="CMSIS-NN">
         <package name="CMSIS-NN" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="4.0.0"/>
-        <targetInfos>
-          <targetInfo name="Nucleo F466RE"/>
-        </targetInfos>
-      </component>
-      <component Cclass="EdgeImpulse" Cgroup="SDK" Cvendor="EdgeImpulse" Cversion="1.0.0">
-        <package name="EI-SDK" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.0"/>
-        <targetInfos>
-          <targetInfo name="Nucleo F466RE"/>
-        </targetInfos>
-      </component>
-      <component Cclass="EdgeImpulse" Cgroup="model" Csub="Motion_recognition" Cvendor="EdgeImpulse" Cversion="1.0.44">
-        <package name="Motion_recognition" schemaVersion="1.7.7" url="http://www.edgeimpulse.com/" vendor="EdgeImpulse" version="1.0.44"/>
         <targetInfos>
           <targetInfo name="Nucleo F466RE"/>
         </targetInfos>
